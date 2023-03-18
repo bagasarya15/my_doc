@@ -1,0 +1,15 @@
+Konfigurasi MySQL
+cd C:\laragon\bin\mysql\mysql-5.7.33-winx64\bin
+mysql -u root
+------------------------------------------------------------
+Menampilkan Seluruh Database
+SHOW DATABASES;
+
+Membuat Database
+CREATE DATABASE testDB;
+
+Menghapus Database
+DROP DATABASE testDB;
+
+Menggunakan Database
+USE testDB;

@@ -1,0 +1,20 @@
+git config --global user.name "bagasarya15"
+git config --global user.email "bagasarya150800@gmail.com"
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/bagasarya15/nameRepo.git
+git push -u origin main -f
+
+// Cara Merge GIT
+
+develop: git add .
+develop: git commit -m "pesannya"
+develop: git checkout test
+test: git merge develop
+test: git push - u origin test
+
+// Cara Clone GIT
+git clone add origin https://github.com/bagasarya15/ci-blog.git
+git clone https://github.com/dirumahrafif/ci4-blog.git

@@ -1,0 +1,101 @@
+
+try {
+            if (transaksiKode.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Isi field terlebih dahulu !");
+            } else {
+                String sql = "INSERT INTO nota VALUES (null,'"+transaksiKode.getText()+"','"+cbCustomer.getSelectedItem()+"','"+trKodeBarang.getText()+"', '"+trNamaBarang.getText()+"', '"+trQty.getText()+"', '"+trTotal.getText()+"', '"+txtBayar.getText()+"', '"+txtKembalian.getText()+"', '"+txtTgl.getText()+"')";
+                Connection conn = (Connection)Koneksi.getKoneksi();
+                PreparedStatement pst = conn.prepareStatement(sql);
+                pst.execute();
+                tampilDataPenjualan(); autoKodeTransaksi(); nullTableKeranjang(); nullTransaksi(); countData();
+                JOptionPane.showMessageDialog(null, "Barang berhasil dibayar !");
+            }
+        }catch(HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+
+
+String noTransaksi = transaksiKode.getText();
+        String tanggal = txtTgl.getText();
+        String total = txtTotalBayar.getText();
+        
+        try {
+            Connection conn = (Connection)Koneksi.getKoneksi();
+            String sql = "INSERT INTO nota VALUES (?, ?, ?, ?)";
+            PreparedStatement p = conn.prepareStatement(sql);
+            p.setString(2, noTransaksi);
+            p.setString(3, String.valueOf(cbCustomer.getSelectedIndex()+1));
+            p.setString(5, total);
+            p.setString(10, tanggal);
+            p.executeUpdate();
+            p.close();
+        } catch (Exception e) {
+            System.out.println("Simpan Penjualan ERROR" + e);
+        }
+
+DefaultTableModel model = (DefaultTableModel) tabelInputTransaksi.getModel();
+        
+        try {
+            
+                String sql = "INSERT INTO nota VALUES (null,'"+transaksiKode.getText()+"','"+cbCustomer.getSelectedItem()+"',''"+txtBayar.getText()+"', '"+txtKembalian.getText()+"', '"+txtTgl.getText()+"')";
+                Connection conn = (Connection)Koneksi.getKoneksi();
+                PreparedStatement pst = conn.prepareStatement(sql);
+                pst.execute();
+                tampilDataPenjualan(); autoKodeTransaksi(); nullTableKeranjang(); nullTransaksi(); countData();
+                JOptionPane.showMessageDialog(null, "Barang berhasil dibayar !");
+            
+        }catch(HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+
+        
+        try {
+            Connection conn = (Connection)Koneksi.getKoneksi();
+            int baris = tabelInputTransaksi.getRowCount();
+            
+            for (int i = 0; i < baris; i++) {
+                String sql = "INSERT INTO nota (kode_barang, nama_barang, qty, total) VALUES('"
+                        + tabelInputTransaksi.getValueAt(i, 1) +"','"+ tabelInputTransaksi.getValueAt(i, 2) +"','"+ tabelInputTransaksi.getValueAt(i, 4) 
+                        +"','"+ tabelInputTransaksi.getValueAt(i, 5) +"')";
+                PreparedStatement p = conn.prepareStatement(sql);
+                p.executeUpdate();
+                p.close();
+            }
+        } catch (Exception e) {
+            System.out.println("simpan nota error" + e);
+        }
+      autoKodeTransaksi();
+
+//           System.out.println("Data Inserted");
+//           System.out.println("rowsInserted Count = " + rowsInserted.length);
+
+
+Backup Query
+String sqlQuery = "INSERT INTO `transaksi_detail` "
+                          + "(`id_detail`,`no_transaksi`, `id_customer` , `kode_barang`, `nama_barang`, `jumlah_beli`, "
+                          + "`harga_jual`, `total_harga`, `total_bayar`, `total_kembalian`, `tgl_transaksi`)"
+                          + " VALUES (default,'"+transaksiKode.getText()+"', '"+txNamaCustomer.getText()+"', "
+                          + "'"+kodeBarang+"','"+namaBarang+"','"+qtyBarang+"','"+hargaBarang+"','"+totalHarga+"', "
+                          + "'"+txtBayar.getText()+"', '"+txtKembalian.getText()+"', '"+txtTgl.getText()+"')";
+                  st.addBatch(sqlQuery);
+
+//Query Join 2 Table
+"SELECT produk.id_produk, produk.kode_barang, produk.nama_barang, produk.harga_jual,  transaksi.jumlah_beli, transaksi.stok_awal, transaksi.total FROM produk JOIN transaksi  ON produk.id_produk = transaksi.id_produk"
+
+SELECT price_today.stock_code
+FROM price_today
+JOIN price_tomorrow ON price_today.stock_code = price_tomorrow.stock_code
+WHERE price_tomorrow.price > price_today.price
+ORDER BY price_today.stock_code;
+
+//Query Join 3 Table
+SELECT transaksi_detail.no_transaksi, customer.nama_customer, produk.kode_barang, produk.nama_barang, produk.harga_jual, transaksi_detail.jumlah_beli, transaksi_detail.total_harga, transaksi_detail.total_bayar, transaksi_detail.total_kembalian, transaksi_detail.tgl_transaksi FROM customer JOIN transaksi_detail ON customer.id_customer = transaksi_detail.id_customer JOIN produk ON produk.id_produk = transaksi_detail.id_produk;
+
+//Query Transaksi Detail
+SELECT transaksi_detail.no_transaksi, users.name ,customer.nama_customer, produk.kode_barang, produk.nama_barang, produk.harga_jual, transaksi_detail.jumlah_beli, transaksi_detail.total_harga, transaksi_detail.total_bayar, transaksi_detail.total_kembalian, transaksi_detail.tgl_transaksi FROM customer JOIN transaksi_detail ON customer.id_customer = transaksi_detail.id_customer JOIN produk ON produk.id_produk = transaksi_detail.id_produk JOIN users ON users.id_user = transaksi_detail.id_user;
+
+"Depok, " + new SimpleDateFormat(". . . . . " +"MMMM yyyy", new Locale("id", "ID")).format($F{tgl_transaksi})
+
+SELECT transaksi_detail.no_transaksi, customer.nama_customer, produk.kode_barang, produk.nama_barang, produk.harga_jual, transaksi_detail.jumlah_beli, transaksi_detail.total_harga, transaksi_detail.total_bayar, transaksi_detail.total_kembalian, transaksi_detail.tgl_transaksi FROM customer JOIN transaksi_detail ON customer.id_customer = transaksi_detail.id_customer JOIN produk ON produk.id_produk = transaksi_detail.id_produk WHERE MONTH(tgl_transaksi)=$P{ByMonth} AND YEAR(tgl_transaksi)=$P{ByYear}
+
+SELECT pengeluaran.no_pengeluaran, pengeluaran.jenis_pengeluaran, pengeluaran.keterangan, pengeluaran.jumlah, pengeluaran.total_pengeluaran, pengeluaran.tgl_pengeluaran, logo.image FROM pengeluaran JOIN logo WHERE logo.id_logo = 1;
