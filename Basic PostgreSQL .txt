@@ -1,0 +1,23 @@
+-- CREATE TABLE users (
+-- 	id SERIAL PRIMARY KEY,
+-- 	username VARCHAR(255) NOT NULL,
+-- 	password VARCHAR(255) NOT NULL,
+-- 	name VARCHAR(255) NOT NULL
+-- );
+
+-- INSERT INTO 
+-- 	users(username, password, name) 
+-- 		VALUES('bagasarya15', 'bagas123', 'Bagas Arya');
+-- INSERT INTO 
+-- 	users(username, password, name) 
+-- 		VALUES('mozarl15', 'moza123', 'Mozarela');
+
+-- SELECT * FROM users ORDER BY id ASC LIMIT 1;
+
+-- UPDATE users SET name='Bagas Arya Pradipta' WHERE id = 1;
+
+-- Query untuk ganti nama column table
+-- ALTER TABLE users RENAME COLUMN nama TO name;
+
+-- Query untuk ganti nama table
+-- ALTER TABLE data RENAME TO users;
