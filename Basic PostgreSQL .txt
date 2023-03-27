@@ -1,9 +1,28 @@
 -- CREATE TABLE users (
--- 	id SERIAL PRIMARY KEY,
+-- 	id SERIAL PRIMARY KEY, OR id uuid DEFAULT uuid_generate_v4 ()
 -- 	username VARCHAR(255) NOT NULL,
 -- 	password VARCHAR(255) NOT NULL,
 -- 	name VARCHAR(255) NOT NULL
 -- );
+
+//Create table with check
+-- CREATE TABLE users (
+-- 	id SERIAL PRIMARY KEY,
+-- 	username VARCHAR(255) NOT NULL,
+-- 	password VARCHAR(255) NOT NULL,
+-- 	first_name VARCHAR(255) NOT NULL,
+-- 	last_name VARCHAR(255) NOT NULL,
+-- 	CHECK(
+-- 		first_name !~ '\s'
+-- 		AND last_name !~ '\s'
+-- 	)
+-- );
+
+-- INSERT INTO users(username, password, first_name, last_name) 
+-- 	VALUES ('bagas15', 'bagas123', 'BagasArya', 'Pradipta')
+
+
+//Note ID SERIAL increment angka biasa sedangkan uuid (Universal Unique Identifier) id yang dihasilkan dari algoritma
 
 -- INSERT INTO 
 -- 	users(username, password, name) 
@@ -11,6 +30,11 @@
 -- INSERT INTO 
 -- 	users(username, password, name) 
 -- 		VALUES('mozarl15', 'moza123', 'Mozarela');
+
+//Insert menggunakan JSON
+--INSERT INTO TakeOrder (info)
+VALUES('{ "customer": "Alex Cross", "items": {"product": "Tea","qty": 6}}');
+
 
 -- SELECT * FROM users ORDER BY id ASC LIMIT 1;
 
@@ -21,3 +45,4 @@
 
 -- Query untuk ganti nama table
 -- ALTER TABLE data RENAME TO users;
+
