@@ -11,9 +11,9 @@ CREATE TABLE film(
 	release_year DATE NOT NULL,
 	language_id INTEGER REFERENCES language(language_id),
 	rental_duration TIMESTAMP NOT NULL,
-	rental_rate NUMERIC(5,2) NOT NULL,
+	rental_rate TIMESTAMP NOT NULL,
 	length TIME NOT NULL,
-	replacement_cost (5,2) NOT NULL,
+	replacement_cost SMALLINT NOT NULL,
 	rating NUMERIC(1,1) NOT NULL,
 	last_update TIMESTAMP NOT NULL,
 	special_features VARCHAR(100) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE film(
 CREATE TABLE language(
 	language_id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
-	last_update TIMESTAMP NOT NULL DEFAULT NOW()
+	last_update TIMESTAMP NOT NULL
 )
 
 CREATE TABLE film_category(
@@ -37,7 +37,7 @@ CREATE TABLE actor(
 	actor_id SERIAL PRIMARY KEY,
 	first_name VARCHAR(50) NOT NULL,
 	last_name VARCHAR(50) NOT NULL,
-	last_update TIMESTAMP NOT NULL DEFAULT NOW()
+	last_update TIMESTAMP NOT NULL
 )
 
 CREATE TABLE film_actor(
